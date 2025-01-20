@@ -2,20 +2,146 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  height: 100%;
+  width: 100%;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 1000;
+  font-size: 18px;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* Layout */
+.container {
+  display: flex;
+  flex: 1;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 100%;
+}
+
+/* Left Menu */
+.left-menu {
+  flex: 1;
+  max-width: 250px;
+  background: #f4f4f4;
+  padding: 15px;
+  border-right: 1px solid #ddd;
+  transition: max-width 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+/* Collapsed Left Menu */
+.left-menu.collapsed {
+  max-width: 50px; /* Make the collapsed menu narrow */
+  padding: 10px;  /* Adjust padding to accommodate the button */
+  border: none;
+  overflow: hidden;
+  text-align: center; /* Center the button when collapsed */
+}
+
+/* Toggle Button */
+.toggle-btn {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.toggle-btn:hover {
+  background-color: #555;
+}
+
+/* Menu List */
+.menu-list {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-list li {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.menu-list li:hover {
+  background-color: #ddd;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+/* Main Content */
+.main-content {
+  flex: 2;
+  background: #fff;
+  padding: 15px;
+}
+
+/* Right Panel */
+.right-panel {
+  flex: 1;
+  max-width: 350px;
+  background: #f4f4f4;
+  padding: 15px;
+  border-left: 1px solid #ddd;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 50px 0;
+  }
+
+  .left-menu, .main-content, .right-panel {
+    flex: none;
+    max-width: 100%;
+  }
+
+  .left-menu {
+    border-right: none;
+  }
+
+  .right-panel {
+    border-left: none;
+  }
 }
